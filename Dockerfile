@@ -10,9 +10,11 @@ RUN mv protoc3/include/* /usr/local/include/
 
 # install pycocotool for evaluation
 RUN apt-get update
+# stop waiting for a response
+RUN apt-get install -y tzdata	RUN DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 RUN apt install -y git python3-tk libsm6 libxext6
 RUN pip3 install cython pillow opencv-python
 RUN pip3 install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 
-
-
+# install notebook
+RUN pip3 install ipython jupyter
